@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 import Section from 'components/Section/Section';
 import Form from 'components/Form/Form';
 import ContactList from 'components/ContactList/ContactList';
@@ -15,7 +16,7 @@ export class App extends Component {
     if (this.uniqueContactValidator(contact) === true) {
       return;
     }
-    contact.id = contact.number;
+    contact.id = nanoid();
     this.setState(prevState => ({
       contacts: [...prevState.contacts, contact],
     }));
@@ -60,9 +61,7 @@ export class App extends Component {
             onFilter={this.filterHandler}
           />
           <ContactList
-            contacts={
-              this.state.filter === '' ? this.state.contacts : filteredContacts
-            }
+            contacts={filteredContacts}
             filterValue={this.state.filter}
             onDelete={this.deleteHandler}
           />

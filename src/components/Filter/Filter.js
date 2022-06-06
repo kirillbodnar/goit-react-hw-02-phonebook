@@ -24,6 +24,6 @@ export default function Filter({ queryValue, onFilter }) {
 }
 
 Filter.propTypes = {
-  onChange: PropTypes.func,
-  value: PropTypes.string,
+  onFilter: PropTypes.func.isRequired,
+  queryValue: PropTypes.string.isRequired,
 };
